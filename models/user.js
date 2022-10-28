@@ -5,7 +5,7 @@ const user = {
     email: '',
     password: '',
     apartment: ''
-}
+};
 
 const userSchema = new mongoose.Schema({
     fullName: {
@@ -25,6 +25,19 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true,
     }
-})
+});
 
-mongoose.model('User', userSchema);
+userSchema.statics.isThisEmailUnique = async function(email) {
+    if(!email) throw new Error('Please introduce an email address');
+    try{
+        const user = await this.findOne({email});
+        if(user) return false;
+        return true;
+    } catch(error) {
+        console.log('error caught while verifying the uniqueness of the email address:', error.message);
+        return false;
+    }
+
+}
+
+module.exports = mongoose.model('User', userSchema);
