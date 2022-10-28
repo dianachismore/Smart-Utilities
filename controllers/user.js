@@ -1,3 +1,4 @@
+const User = require('../models/user');
 exports.createUser = async (req, res) => {
     const {fullName, email, password, phoneNumber} = req.body;
     const isNewUser = await User.isThisEmailUnique(email);
