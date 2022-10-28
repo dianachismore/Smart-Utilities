@@ -5,7 +5,22 @@ require('./models/db');
 const User = require('./models/user')
 const app = express();
 
+app.use((req, res, next) => {
+    req.on('data', chunk => {
+        const data = JSON.parse(chunk);
+        req.body = data;
+    });
+    next();
+});
+
+app.use(express.json());
+
+app.get('/test',(req,res) =>{
+    res.send('Hello World!');
+})
+
 app.post('/register', async (req, res) => {
+    res.json(req.body);
     const isNewUser = await User.isThisEmailUnique('john@gmail.com');
     if(!isNewUser) return res.json({suces:false, message: 'This email is already in use, try signing in'})
     const user = await User({
