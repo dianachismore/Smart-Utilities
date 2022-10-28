@@ -8,7 +8,7 @@ const user = {
 }
 
 const userSchema = new mongoose.Schema({
-    fullname: {
+    fullName: {
         type: String,
         required:true
     },
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    apartment: {
+    phoneNumber: {
         type: String,
         required:true
     }

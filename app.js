@@ -7,10 +7,10 @@ const app = express();
 
 app.post('/register', async (req, res) => {
     const user = await User({
-        fullname: 'John Doe',
+        fullName: 'John Doe',
         email: 'john@gmail.com',
         password: 'password',
-        apartment: '56'
+        phoneNumber: '0742777766'
     });
     res.json(user);
 });
