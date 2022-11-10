@@ -16,6 +16,7 @@ import Verify from './screens/Verify'
 import ForgetPassword from './screens/ForgetPassword'
 import ResetPassword from './screens/ResetPassword'
 import PayCard from './screens/PayCard'
+import AddPost from './screens/AddPost'
 
 const Stack = createNativeStackNavigator()
 
@@ -37,8 +38,6 @@ const Main = () => {
             <Stack.Navigator initialRouteName={isAuthenticated ? "home" : "login"}>
 
                 <Stack.Screen name='home' component={Home} options={{ headerShown: false }} />
-                <Stack.Screen name='payment' component={Payment} options={{ headerShown: false }} />
-                <Stack.Screen name='paycard' component={PayCard} options={{ headerShown: false }} />
                 <Stack.Screen name='login' component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name='register' component={Register} options={{ headerShown: false }} />
                 <Stack.Screen name='verify' component={Verify} options={{ headerShown: false }} />
@@ -47,8 +46,9 @@ const Main = () => {
                 <Stack.Screen name='changepassword' component={ChangePassword} options={{ headerShown: false }} />
                 <Stack.Screen name='forgetpassword' component={ForgetPassword} options={{ headerShown: false }} />
                 <Stack.Screen name='resetpassword' component={ResetPassword} options={{ headerShown: false }} />
-
-
+                <Stack.Screen name='payment' component={Payment} options={{ headerShown: false }} />
+                <Stack.Screen name='paycard' component={PayCard} options={{ headerShown: false }} />
+                <Stack.Screen name='addpost' component={AddPost} options={{ headerShown: false }} />
             </Stack.Navigator>
 
             {isAuthenticated && <Footer />}

@@ -21,7 +21,7 @@ const Home = ({ navigation }) => {
           paddingTop: 20,
           alignItems: 'center',
         }}>
-        <FontAwesome name="plus-square-o" style={{fontSize: 24}} />
+        <FontAwesome name="plus-square-o" style={{fontSize: 24}} onPress={() => navigation.navigate("addpost")}/>
         <Feather name="navigation" style={{fontSize: 24}} />
       </View>
 

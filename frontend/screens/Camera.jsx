@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import Icon from "react-native-vector-icons/MaterialIcons";
 import * as ImagePicker from "expo-image-picker"
@@ -28,6 +28,7 @@ const CameraComponent = ({ navigation, route }) => {
             allowsEditing: true, aspect: [1, 1], quality: 1
         });
         if (route.params.updateProfile) return navigation.navigate("profile", { image: data.uri })
+        else if (route.params.addPost) return navigation.navigate("addPost", { image: data.uri })
         else return navigation.navigate("register", { image: data.uri })
     }
 
@@ -35,6 +36,7 @@ const CameraComponent = ({ navigation, route }) => {
 
         const data = await camera.takePictureAsync();
         if (route.params.updateProfile) return navigation.navigate("profile", { image: data.uri })
+        else if (route.params.addPost) return navigation.navigate("addPost", { image: data.uri })
         else return navigation.navigate("register", { image: data.uri })
 
     }
