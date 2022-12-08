@@ -28,7 +28,7 @@ const CameraComponent = ({ navigation, route }) => {
             allowsEditing: true, aspect: [1, 1], quality: 1
         });
         if (route.params.updateProfile) return navigation.navigate("profile", { image: data.uri })
-        else if (route.params.addPost) return navigation.navigate("addPost", { image: data.uri })
+        else if (route.params.addPost) return navigation.navigate("addpost", { image: data.uri })
         else return navigation.navigate("register", { image: data.uri })
     }
 
@@ -36,7 +36,7 @@ const CameraComponent = ({ navigation, route }) => {
 
         const data = await camera.takePictureAsync();
         if (route.params.updateProfile) return navigation.navigate("profile", { image: data.uri })
-        else if (route.params.addPost) return navigation.navigate("addPost", { image: data.uri })
+        else if (route.params.addPost) return navigation.navigate("addpost", { image: data.uri })
         else return navigation.navigate("register", { image: data.uri })
 
     }

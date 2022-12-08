@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Avatar, Button } from 'react-native-paper'
+import { Dropdown } from 'react-native-element-dropdown';
 import { useDispatch } from 'react-redux';
 import { register } from '../redux/action';
 import mime from 'mime';
@@ -14,7 +15,10 @@ const Register = ({ navigation, route }) => {
     const [password, setPassword] = useState("");
     const [apartamentNr, setApartamentNr] = useState("");
     const [role, setRole] = useState("");
-
+    const roles = [
+        { label: 'Renter', value: '1' },
+        { label: 'Landlord', value: '2' },
+      ];
     const dispatch = useDispatch()
 
     const handleImage = () => {
@@ -93,11 +97,19 @@ const Register = ({ navigation, route }) => {
                     value={apartamentNr}
                     onChangeText={setApartamentNr}
                 />
-                <TextInput
-                    style={Styles.input}
-                    placeholder="Role"
-                    value={role}
-                    onChangeText={setRole}
+                <Dropdown
+                   style={Styles.dropdown}
+                   containerStyle={Styles.dropdownContainer}
+                   placeholderStyle={Styles.dropdownPlaceholder}
+                   data={roles}
+                   maxHeight={300}
+                   labelField="label"
+                   valueField="value"
+                   placeholder="Role"
+                   value={role}
+                   onChange={item => {
+                     setRole(item.role);
+                   }}
                 />
             </View>
 
@@ -147,4 +159,21 @@ const Styles = StyleSheet.create({
         padding: 5,
         width: "70%",
     },
+    dropdown: {
+        padding: 10,
+        marginVertical: 15,
+        height: 50,
+        borderWidth: 1,
+        borderColor: "#b5b5b5",
+        borderRadius: 15,
+    },
+    dropdownContainer:{
+        marginBottom: -140,
+        borderWidth: 1,
+        borderColor: "#b5b5b5",
+        borderRadius: 15,
+    },
+    dropdownPlaceholder:{
+        color: "#b5b5b5",
+    }
 })

@@ -6,7 +6,7 @@ const { width } = Dimensions.get("screen")
 const Category = ({category}) => {
     const navigation = useNavigation()
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("paycard")}>
+    <TouchableOpacity onPress={() => navigation.navigate(category.navigate)}>
       <View style={styles.container}>
         <Image style={styles.image} source={category.img} />
         <Text style={[values.h2Style, {marginTop: 10}]}>{category.heading}</Text>

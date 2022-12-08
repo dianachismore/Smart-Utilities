@@ -1,20 +1,25 @@
 import React, {useState} from 'react';
+import { useSelector } from 'react-redux'
 import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
-import Entypo from 'react-native-vector-icons/Entypo';
 
 const Post = () => {
+  const { user, loading } = useSelector(state => state.auth)
+  const [name, setName] = useState(user.name);
+  const [avatar, setAvatar] = useState(user.avatar.url);
+  const [image, setImage] = useState(user.posts.image);
+  const [description, setDescription] = useState(user.posts.description);
   const postInfo = [
-    {
-      postTitle: 'Diana',
-      postPersonImage: require('../assets/userProfile.jpg'),
-      postImage: require('../assets/post.jpg'),
-      description: 'S-a pus banca in fata blocului',
-      likes: 765,
-      isLiked: false,
-    },
+   //  {
+    //   postTitle: {name},
+    //   postPersonImage: {avatar},
+    //   postImage: {image},
+    //   description: {description},
+    //   likes: 765,
+    //   isLiked: false,
+    // },
     {
       postTitle: 'Lavinia',
       postPersonImage: require('../assets/userProfile.jpg'),

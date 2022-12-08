@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverUrl = "http://localhost:5000/api/v1";
+const serverUrl = "http://127.0.0.1:5000/api/v1";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -32,14 +32,14 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const addTask = (title, description) => async (dispatch) => {
+export const addPost = () => async (dispatch) => {
   try {
-    dispatch({ type: "addTaskRequest" });
+    dispatch({ type: "addPostRequest" });
 
     const { data } = await axios.post(
-      `${serverUrl}/newtask`,
+      `${serverUrl}/newpost`,
       {
-        title,
+        image,
         description,
       },
       {
@@ -48,35 +48,35 @@ export const addTask = (title, description) => async (dispatch) => {
         },
       }
     );
-    dispatch({ type: "addTaskSuccess", payload: data.message });
+    dispatch({ type: "addPostSuccess", payload: data.message });
   } catch (error) {
-    dispatch({ type: "addTaskFailure", payload: error.response.data.message });
+    dispatch({ type: "addPostFailure", payload: error.response.data.message });
   }
 };
 
-export const updateTask = (taskId) => async (dispatch) => {
+export const updatePost = (postId) => async (dispatch) => {
   try {
-    dispatch({ type: "updateTaskRequest" });
+    dispatch({ type: "updatePostRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/task/${taskId}`);
-    dispatch({ type: "updateTaskSuccess", payload: data.message });
+    const { data } = await axios.get(`${serverUrl}/post/${postId}`);
+    dispatch({ type: "updatePostSuccess", payload: data.message });
   } catch (error) {
     dispatch({
-      type: "updateTaskFailure",
+      type: "updatePostFailure",
       payload: error.response.data.message,
     });
   }
 };
 
-export const deleteTask = (taskId) => async (dispatch) => {
+export const deletePost = (postId) => async (dispatch) => {
   try {
-    dispatch({ type: "deleteTaskRequest" });
+    dispatch({ type: "deletePostRequest" });
 
-    const { data } = await axios.delete(`${serverUrl}/task/${taskId}`);
-    dispatch({ type: "deleteTaskSuccess", payload: data.message });
+    const { data } = await axios.delete(`${serverUrl}/post/${postId}`);
+    dispatch({ type: "deletePostSuccess", payload: data.message });
   } catch (error) {
     dispatch({
-      type: "deleteTaskFailure",
+      type: "deletePostFailure",
       payload: error.response.data.message,
     });
   }

@@ -17,6 +17,8 @@ import ForgetPassword from './screens/ForgetPassword'
 import ResetPassword from './screens/ResetPassword'
 import PayCard from './screens/PayCard'
 import AddPost from './screens/AddPost'
+import PayYourRent from './screens/PayYourRent'
+import PayYourUtilities from './screens/PayYourUtilities'
 
 const Stack = createNativeStackNavigator()
 
@@ -49,6 +51,8 @@ const Main = () => {
                 <Stack.Screen name='payment' component={Payment} options={{ headerShown: false }} />
                 <Stack.Screen name='paycard' component={PayCard} options={{ headerShown: false }} />
                 <Stack.Screen name='addpost' component={AddPost} options={{ headerShown: false }} />
+                <Stack.Screen name='payrent' component={PayYourRent} options={{ headerShown: false }} />
+                <Stack.Screen name='payutilities' component={PayYourUtilities} options={{ headerShown: false }} />
             </Stack.Navigator>
 
             {isAuthenticated && <Footer />}

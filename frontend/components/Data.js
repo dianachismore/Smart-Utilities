@@ -2,12 +2,14 @@ const categories = [
     {
         id: 1,
         img: require('../assets/key.png'),
-        heading: 'Rent'
+        heading: 'Rent',
+        navigate: 'payrent'
     },
     {
         id: 2,
         img: require('../assets/home.png'),
-        heading: 'Utilities'
+        heading: 'Utilities',
+        navigate: 'payutilities'
     }
 ];
 

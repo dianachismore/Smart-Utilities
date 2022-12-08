@@ -10,16 +10,8 @@ const Payment = ({ navigation, route }) => {
     const { user, loading } = useSelector(state => state.auth)
     const [name, setName] = useState(user.name);
     const [avatar, setAvatar] = useState(user.avatar.url);
-    useEffect(() => {
-        if (route.params) {
-            if (route.params.image) {
-                setAvatar(route.params.image)
-            }
-        }
-
-    }, [route])
     return (
-        <ScrollView style={styles.containerBig}>
+        <View style={styles.containerBig}>
         <View style={styles.horizontalPaddingView}>
             <View style={styles.container}>
                 <View>
@@ -31,10 +23,11 @@ const Payment = ({ navigation, route }) => {
             <View style={{height: 20}}></View>
             <SearchBar placeholder='Search' icon='search-outline' />
             <View style={{height: 20}}></View>
-            <Text style={values.h2Style}>Payment</Text>
-            <View style={{height: 20}}></View>
+            
         </View>
             <View style={styles.horizontalPaddingView}>
+            <Text style={values.h2Style}>Payment</Text>
+            <View style={{height: 20}}></View>
                 <FlatList 
                     horizontal
                     data={categories}
@@ -55,7 +48,7 @@ const Payment = ({ navigation, route }) => {
             />
         </View>
         <View style={{height: 60}}></View>
-        </ScrollView>
+        </View>
     );
 };
 

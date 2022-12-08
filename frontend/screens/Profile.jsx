@@ -10,10 +10,8 @@ const Profile = ({ navigation, route }) => {
 
     const { user, loading } = useSelector(state => state.auth)
 
-
     const [name, setName] = useState(user.name);
     const [avatar, setAvatar] = useState(user.avatar.url);
-
 
     const dispatch = useDispatch()
 
