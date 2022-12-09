@@ -246,3 +246,65 @@ export const resetPassword = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const addPost = async (req, res) => {
+  try {
+    const { photo, description } = req.body;
+
+    const user = await User.findById(req.user._id);
+
+    user.post.push({
+      photo,
+      description,
+      createdAt: new Date(Date.now()),
+    });
+
+    await user.save();
+
+    res.status(200).json({ success: true, message: "Post added successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const removePost = async (req, res) => {
+  try {
+    const { postId } = req.params;
+
+    const user = await User.findById(req.user._id);
+
+    user.posts = user.posts.filter(
+      (post) => post._id.toString() !== postId.toString()
+    );
+
+    await user.save();
+
+    res
+      .status(200)
+      .json({ success: true, message: "Post removed successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const updatePost = async (req, res) => {
+  try {
+    const { postId } = req.params;
+
+    const user = await User.findById(req.user._id);
+
+    user.post = user.posts.find(
+      (post) => post._id.toString() === postId.toString()
+    );
+
+    user.post.completed = !user.post.completed;
+
+    await user.save();
+
+    res
+      .status(200)
+      .json({ success: true, message: "Post Updated successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

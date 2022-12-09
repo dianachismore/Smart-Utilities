@@ -9,6 +9,9 @@ import {
   updatePassword,
   updateProfile,
   verify,
+  addPost,
+  removePost,
+  updatePost
 } from "../controllers/User.js";
 import { isAuthenticated } from "../middleware/auth.js";
 
@@ -28,5 +31,12 @@ router.route("/updatepassword").put(isAuthenticated, updatePassword);
 
 router.route("/forgetpassword").post(forgetPassword);
 router.route("/resetpassword").put(resetPassword);
+
+router.route("/newpost").post(isAuthenticated, addPost);
+
+router
+  .route("/post/:postId")
+  .get(isAuthenticated, updatePost)
+  .delete(isAuthenticated, removePost);
 
 export default router;

@@ -41,6 +41,12 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
 
+  posts: [{
+      image: "String",
+      description: "String",
+      createdAt: Date,
+    }],
+
   otp: Number,
   otp_expiry: Date,
   resetPasswordOtp: Number,
