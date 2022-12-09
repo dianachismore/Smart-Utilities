@@ -141,5 +141,41 @@ export const messageReducer = createReducer(
     clearMessage: (state) => {
       state.message = null;
     },
+
+    addPostRequest: (state) => {
+      state.loading = true;
+    },
+    addPostSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    addPostFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    updatePostRequest: (state) => {
+      state.loading = true;
+    },
+    updatePostSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    updatePostFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    deletePostRequest: (state) => {
+      state.loading = true;
+    },
+    deletePostSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    deletePostFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   }
 );
