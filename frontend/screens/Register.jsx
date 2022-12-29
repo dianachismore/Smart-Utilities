@@ -38,7 +38,7 @@ const Register = ({ navigation, route }) => {
             name: avatar.split("/").pop()
         })
         myForm.append("apartamentNr", apartamentNr);
-        myForm.append("role", );
+        myForm.append("role", role);
         dispatch(register(myForm));
     }
 

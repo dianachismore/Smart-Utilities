@@ -5,7 +5,7 @@ import { useDispatch} from 'react-redux'
 import { Button } from 'react-native-paper'
 import { addPost, loadUser } from '../redux/action'
 
-const AddPost = ({ navigation, route, image, description }) => {
+const AddPost = ({ navigation, route }) => {
     
     const {user} = useSelector(state => state.auth)
     const [name, setName] = useState(user.name);

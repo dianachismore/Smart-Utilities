@@ -249,12 +249,11 @@ export const resetPassword = async (req, res) => {
 
 export const addPost = async (req, res) => {
   try {
-    const { photo, description } = req.body;
-
+    const { image, description } = req.body;
     const user = await User.findById(req.user._id);
 
-    user.post.push({
-      photo,
+    user.posts.push({
+      image,
       description,
       createdAt: new Date(Date.now()),
     });

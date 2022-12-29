@@ -32,7 +32,7 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const addPost = () => async (dispatch) => {
+export const addPost = (image, description) => async (dispatch) => {
   try {
     dispatch({ type: "addPostRequest" });
 
