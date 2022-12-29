@@ -16,9 +16,9 @@ const Register = ({ navigation, route }) => {
     const [apartamentNr, setApartamentNr] = useState("");
     const [role, setRole] = useState("");
     const roles = [
-        { label: 'Renter', value: '1' },
-        { label: 'Landlord', value: '2' },
-      ];
+        { label: 'Renter', value: "renter" },
+        { label: 'Landlord', value: "landlord" },
+    ];
     const dispatch = useDispatch()
 
     const handleImage = () => {
@@ -108,7 +108,7 @@ const Register = ({ navigation, route }) => {
                    placeholder="Role"
                    value={role}
                    onChange={item => {
-                     setRole(item.role);
+                     setRole(item.value);
                    }}
                 />
             </View>

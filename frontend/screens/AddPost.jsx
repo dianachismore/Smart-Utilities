@@ -68,7 +68,7 @@ const AddPost = ({ navigation, route }) => {
                 {!postImage &&
                 <>
                 <Image style={stylesChoosePhoto.icon} source={require('../assets/uploadImage.png')}/>
-                <Text style={values.h2Style}>Choose a Photo</Text> 
+                <Text style={values.h2Style}>Choose a Photo</Text>
                 </>}
             </View>
         </TouchableOpacity>
